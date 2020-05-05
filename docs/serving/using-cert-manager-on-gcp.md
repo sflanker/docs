@@ -165,23 +165,23 @@ exists.
    where `<your-domain.com>` is your domain:
 
    ```shell
-  # Change this value to the domain you want to use.
-  export DOMAIN=<your-domain.com>
+   # Change this value to the domain you want to use.
+   export DOMAIN=<your-domain.com>
 
-  kubectl apply --filename - <<EOF
-  apiVersion: cert-manager.io/v1alpha2
-  kind: Certificate
-  metadata:
-    name: my-certificate
-    namespace: istio-system
-  spec:
-    secretName: istio-ingressgateway-certs
-    issuerRef:
-      name: letsencrypt-issuer
-    dnsNames:
-    - "*.default.$DOMAIN"
-    - "*.other-namespace.$DOMAIN"
-  EOF
+   kubectl apply --filename - <<EOF
+   apiVersion: cert-manager.io/v1alpha2
+   kind: Certificate
+   metadata:
+     name: my-certificate
+     namespace: istio-system
+   spec:
+     secretName: istio-ingressgateway-certs
+     issuerRef:
+       name: letsencrypt-issuer
+     dnsNames:
+     - "*.default.$DOMAIN"
+     - "*.other-namespace.$DOMAIN"
+   EOF
    ```
 
 1. Ensure that `my-certificate` is created successfully by running the following
